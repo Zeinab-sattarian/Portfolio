@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   basePath: "/Portfolio",
+  assetPrefix: "Portfolio/",
   output: "export", // <=== enables static exports
   reactStrictMode: true,
   trailingSlash: true,
