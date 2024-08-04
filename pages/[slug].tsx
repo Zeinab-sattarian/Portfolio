@@ -2,7 +2,7 @@ import Head from "next/head";
 import CommonFooter from "../components/CommonFooter";
 import Navigation from "components/Navigation";
 
-const page = ({ content, seoDescription, style, pageSpesificStyle }) => {
+const Page = ({ content, seoDescription, style, pageSpesificStyle }) => {
   return (
     <>
       <Head>
@@ -29,31 +29,40 @@ const page = ({ content, seoDescription, style, pageSpesificStyle }) => {
   );
 };
 
-export async function getServerSideProps(context) {
-  let found = false;
-  let props = {
-    name: context.params.slug,
-    content: "Not found",
-    seoTitle: "Not found",
-    seoDescription: "Not found",
-    style: "",
-    head: "",
-    description: "",
-    pageSpesificHead: "",
-    pageSpesificStyle: "",
+export async function getStaticPaths() {
+  // Fetch all possible slugs
+  const res = await fetch("https://api.example.com/pages");
+  const pages = await res.json();
+
+  const paths = pages.map((page) => ({
+    params: { slug: page.slug },
+  }));
+
+  return {
+    paths,
+    fallback: false, // or true if you want to generate the page at request time if it doesn't exist yet
   };
-  if (found) {
-    return {
-      props: props,
-    };
-  } else {
-    return {
-      redirect: {
-        destination: "/",
-        permanent: false,
-      },
-    };
-  }
 }
 
-export default page;
+export async function getStaticProps({ params }) {
+  const res = await fetch(`https://api.example.com/pages/${params.slug}`);
+  const page = await res.json();
+
+  if (!page) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      content: page.content,
+      seoDescription: page.seoDescription,
+      style: page.style,
+      pageSpesificStyle: page.pageSpesificStyle,
+    },
+    revalidate: 1, // Revalidate at most once every second
+  };
+}
+
+export default Page;
