@@ -1,4 +1,8 @@
 import { useState } from "react";
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+const basePath = publicRuntimeConfig.basePath || "";
 
 /**
  *
@@ -15,14 +19,14 @@ export default function Contact() {
   });
 
   const downloadCV = () => {
-    const link = document.createElement('a');
-    link.href = '/datamining&IV.CV.pdf'; 
-    link.download = 'MyCV.pdf';
+    const link = document.createElement("a");
+    link.href = `${basePath}/ZeinabSattarian.CV.pdf`;
+    link.download = `MyCV.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
- 
+
   return (
     <>
       <section id="section">
@@ -30,12 +34,14 @@ export default function Contact() {
           <h2 dangerouslySetInnerHTML={{ __html: texts.title }}></h2>
         </div>
         <div className="content2">
-          <button onClick={() => (window.location.href = "mailto:zeinab.s@pardis.sharif.edu")}>
+          <button
+            onClick={() =>
+              (window.location.href = "mailto:zeinab.s@pardis.sharif.edu")
+            }
+          >
             Send me an Email
           </button>
-          <button onClick={downloadCV}>
-            My CV
-          </button>
+          <button onClick={downloadCV}>My CV</button>
         </div>
       </section>
 
@@ -66,7 +72,7 @@ export default function Contact() {
         }
 
         section .content2 button:hover {
-          background: #00FFFF;
+          background: #00ffff;
           color: #2d3436;
         }
 
@@ -149,4 +155,3 @@ export default function Contact() {
     </>
   );
 }
-

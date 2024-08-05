@@ -1,7 +1,11 @@
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+const basePath = publicRuntimeConfig.basePath || "";
 
 /**
  *
- * 
+ *
  *
  * @param {String} image - Image shown in the preview.
  *
@@ -11,7 +15,7 @@ export default function ImagePreview() {
   return (
     <>
       <div className={`container`}>
-        <img src="/Picture5.png" alt="" />
+        <img src={`${basePath}/picture5.png`} alt="" />
       </div>
       <style jsx>
         {`

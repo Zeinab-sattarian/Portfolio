@@ -1,11 +1,17 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import React, { useRef, useEffect, useState } from "react";
+
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+const basePath = publicRuntimeConfig.basePath || "";
+
 gsap.registerPlugin(ScrollTrigger);
 
 /**
  *
- * 
+ *
  *
  * @param {String} title - Title of the component.
  * @param {String} subtitle - Subtitle of component.
@@ -38,7 +44,7 @@ export default function WorkDesktop() {
         pin: true,
         scrub: 1,
         snap: 1 / (totalPanels - 1),
-        
+
         end: () => "+=" + 1080 * panels.current.length,
       },
     });
@@ -77,13 +83,15 @@ export default function WorkDesktop() {
                   textAlign: "left",
                 }}
               >
-                Created a web-based platform to simplify appointment scheduling and gather feedback for volunteer dentists. 
-                Through comprehensive literature reviews, I explored existing appointment systems and technological advancements. 
-                My work led to improved patient satisfaction and extended charitable services to remote regions.
+                Created a web-based platform to simplify appointment scheduling
+                and gather feedback for volunteer dentists. Through
+                comprehensive literature reviews, I explored existing
+                appointment systems and technological advancements. My work led
+                to improved patient satisfaction and extended charitable
+                services to remote regions.
               </p>
-
             </div>
-            <img src="/work/VDAS.png" alt="VDAS" />
+            <img src={`${basePath}/work/VDAS.png`} alt="VDAS" />
           </section>
           <section className="panel orange" ref={(e) => createPanelsRefs(e, 2)}>
             <div className="content">
@@ -102,22 +110,23 @@ export default function WorkDesktop() {
                   textAlign: "left",
                 }}
               >
-                Developed a real-time transaction processing system that ensures immediate updates to account balances. 
-                Additionally, designed features to display transaction history, created analytical tools for monthly expense reviews, 
-                and improved the user experience through intuitive UI/UX design principles.
+                Developed a real-time transaction processing system that ensures
+                immediate updates to account balances. Additionally, designed
+                features to display transaction history, created analytical
+                tools for monthly expense reviews, and improved the user
+                experience through intuitive UI/UX design principles.
               </p>
-              <div className="">
-                
-              </div>
+              <div className=""></div>
             </div>
-            <img src="/work/nura.png" alt="Metavest App" />
+            <img src={`${basePath}/work/nura.png`} alt="Metavest App" />
           </section>
           <section className="panel purple" ref={(e) => createPanelsRefs(e, 3)}>
             <div className="content">
               <h1
                 style={{
                   width: "clamp(32vw, 32vw, 991.92px)",
-                  textAlign: "left",color: "white"
+                  textAlign: "left",
+                  color: "white",
                 }}
                 dangerouslySetInnerHTML={{
                   __html: `<strong>Facial Recognition</strong> System`,
@@ -126,16 +135,18 @@ export default function WorkDesktop() {
               <p
                 style={{
                   width: "clamp(32vw, 32vw, 890.43px)",
-                  textAlign: "left",color: "white"
+                  textAlign: "left",
+                  color: "white",
                 }}
               >
-                developed a real-time facial recognition system to record employee attendance using computer vision models, resulting in a 30% accuracy improvement. 
-                Additionally, I enhanced data reporting by organizing and cleaning the database, 
-                leading to more accurate monthly reports.
+                developed a real-time facial recognition system to record
+                employee attendance using computer vision models, resulting in a
+                30% accuracy improvement. Additionally, I enhanced data
+                reporting by organizing and cleaning the database, leading to
+                more accurate monthly reports.
               </p>
-              
             </div>
-            <img style={{}} src="/work/FRS.png" alt="FRS" />
+            <img style={{}} src={`${basePath}/work/FRS.png`} alt="FRS" />
           </section>
           <section className="panel green" ref={(e) => createPanelsRefs(e, 4)}>
             <div className="content">
@@ -156,14 +167,15 @@ export default function WorkDesktop() {
                   textAlign: "left",
                 }}
               >
-                In my weather prediction project, ML was used to enhance the accuracy of weather forecasting models. 
-                By identifying patterns in historical weather data, my ML models predicted weather events 
-                with remarkable precision. Leveraging Microsoft Power BI, 
-                I created interactive dashboards to showcase weather trends. 
-                Similarly, in the flight delay prediction project, 
-                by leveraging historical flight data and relevant features, ML algorithms enabled accurate predictions. 
+                In my weather prediction project, ML was used to enhance the
+                accuracy of weather forecasting models. By identifying patterns
+                in historical weather data, my ML models predicted weather
+                events with remarkable precision. Leveraging Microsoft Power BI,
+                I created interactive dashboards to showcase weather trends.
+                Similarly, in the flight delay prediction project, by leveraging
+                historical flight data and relevant features, ML algorithms
+                enabled accurate predictions.
               </p>
-              
             </div>
             <div
               style={{ paddingLeft: "50px", alignItems: "space-around" }}
@@ -186,14 +198,17 @@ export default function WorkDesktop() {
                   textAlign: "left",
                 }}
               >
-                implemented a discrete event simulation for a discount warehouse using exponential 
-                and normal distributions to model customer interarrival and service times, respectively. 
-                The simulation generated a detailed table tracking customer arrivals, wait times, service durations, 
-                and server idle times. Key performance metrics, such as average waiting time, probability of waiting, 
-                server idle time fraction, average service time, and total time in the warehouse, were calculated and 
-                displayed. The number of customers can vary based on input, allowing for flexible analysis
-                             </p>
-              
+                implemented a discrete event simulation for a discount warehouse
+                using exponential and normal distributions to model customer
+                interarrival and service times, respectively. The simulation
+                generated a detailed table tracking customer arrivals, wait
+                times, service durations, and server idle times. Key performance
+                metrics, such as average waiting time, probability of waiting,
+                server idle time fraction, average service time, and total time
+                in the warehouse, were calculated and displayed. The number of
+                customers can vary based on input, allowing for flexible
+                analysis
+              </p>
             </div>
           </section>
           <section className="panel gray" ref={(e) => createPanelsRefs(e, 5)}>
@@ -296,7 +311,7 @@ export default function WorkDesktop() {
         }
 
         .red {
-          background-color: #FFC9CD;
+          background-color: #ffc9cd;
         }
 
         .purple {
@@ -485,7 +500,7 @@ export default function WorkDesktop() {
           transition: all 0.5s;
           cursor: pointer;
           margin-right: 15px;
-          background-color: #00FFFF;
+          background-color: #00ffff;
         }
 
         .box2 button span {

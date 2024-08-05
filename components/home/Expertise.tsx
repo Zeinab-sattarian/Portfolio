@@ -1,8 +1,12 @@
 import { useState } from "react";
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+const basePath = publicRuntimeConfig.basePath || "";
 
 /**
  *
- * 
+ *
  *
  * @param {String} title - Title of the component.
  * @param {String} subtitle - Subtitle of the component.
@@ -23,7 +27,6 @@ export default function Expertise() {
     item3: `Experienced in React, Django, WordPress, HTML/CSS, JavaScript and Docker.`,
   });
 
-
   return (
     <>
       <section id="section2">
@@ -39,17 +42,17 @@ export default function Expertise() {
 
           <ul>
             <li className="animation-element">
-              <img src="/icon/DA.png" />
+              <img src={`${basePath}/icon/DA.png`} />
               <h4>{texts.item1Title}</h4>
               <span>{texts.item1}</span>
             </li>
             <li className="animation-element">
-              <img src="/icon/ML.png" />
+              <img src={`${basePath}/icon/ML.png`} />
               <h4>{texts.item2Title}</h4>
               <span>{texts.item2}</span>
             </li>
             <li className="animation-element">
-              <img src="/icon/FSD.png" />
+              <img src={`${basePath}/icon/FSD.png`} />
               <h4>{texts.item3Title}</h4>
               <span>{texts.item3}</span>
             </li>

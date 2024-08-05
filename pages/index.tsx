@@ -10,6 +10,10 @@ import { BrowserView, MobileView } from "react-device-detect";
 import Projects from "components/home/Projects";
 import Head from "next/head";
 import parse from "html-react-parser";
+import getConfig from "next/config";
+
+const { publicRuntimeConfig } = getConfig();
+const basePath = publicRuntimeConfig.basePath || "";
 
 export default function Index() {
   const [texts] = useState({
@@ -110,7 +114,7 @@ export default function Index() {
         <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
         <title>{texts.title}</title>
         <meta name="description" content={texts.description} />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={`${basePath}/favicon.ico`} />
         {parseHead}
       </Head>
       <Navigation />

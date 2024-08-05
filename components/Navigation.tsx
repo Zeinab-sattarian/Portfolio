@@ -1,11 +1,14 @@
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/router";
 import { Link } from "react-scroll";
+import getConfig from "next/config";
 
+const { publicRuntimeConfig } = getConfig();
+const basePath = publicRuntimeConfig.basePath || "";
 
 /**
  *
- * 
+ *
  *
  */
 
@@ -77,11 +80,15 @@ export default function Navigation({
       >
         <a className="home-logo" href="/">
           {!isDark ? (
-            <img className="white" src="/icon.png" alt="logo" />
+            <img className="white" src={`${basePath}/icon.png`} alt="logo" />
           ) : (
-            <img className="white" src="/icon.png" alt="logo" />
+            <img className="white" src={`${basePath}/icon.png`} alt="logo" />
           )}
-          <img className="colored" src="/icon.png" alt="logo colored" />
+          <img
+            className="colored"
+            src={`${basePath}/icon.png`}
+            alt="logo colored"
+          />
         </a>
 
         <ul className="menu">
