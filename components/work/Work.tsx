@@ -136,7 +136,7 @@ export default function WorkDesktop() {
                 style={{
                   width: "clamp(32vw, 32vw, 890.43px)",
                   textAlign: "left",
-                  color: "black",
+                  color: "white",
                 }}
               >
                 developed a real-time facial recognition system to record
