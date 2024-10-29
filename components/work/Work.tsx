@@ -315,7 +315,7 @@ export default function WorkDesktop() {
         }
 
         .purple {
-          background-image: url("${basePath}/work/dots.jpg");
+          background-image: url("/public/work/dots.jpg");
         }
         .green {
           background-color: #28a92b;
